@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - openjdk7
+sudo: false
+install: 
+  - mvn clean install
