@@ -4,3 +4,10 @@ jdk:
 sudo: false
 install: 
   - mvn clean install
+deploy:
+  provider: releases
+  api_key: "test"
+  file: target/simple-web-app.war
+  skip_cleanup: true
+  on:
+    tags: true
