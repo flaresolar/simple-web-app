@@ -1,13 +1,13 @@
 language: java
 jdk:
-  - openjdk7
+- openjdk7
 sudo: false
-install: 
-  - mvn clean install
+install:
+- mvn clean install
 deploy:
   provider: releases
-  api_key: "test"
-  file: target/simple-web-app.war
-  skip_cleanup: true
+  api_key:
+    secure: YzbSqIkgTGNHThtmGDyDCV/8pVWJqubqjgslb0cMOx9Pn1chkYMrwwiU5u9i0vwcP8/vBULPb7aNf2zHFkhAj1cpBhkvv+sQ+5BZFia1/uRUa5zvgvYeuqVZsfy6Uda32XTDjzj7rcfJZDaumbMNE4ZbVIBpHux+FVM4P0rP3Gs2Jm2j1kvQZPAbb5zd/G/GR4bt0PcFqWK2qrvwGeZzHsQYFkDjTd9fyFBIwTrT22Wd1A1JBKLyxTxax8xHsmJ2z9hp5mPbUPLJcNIV1qrIl8NZN2sKS7vidrFzBCAqj9Loak5uYuoQ1UqUcpW28d56GSrDAS4gFZs9k3bRe1Z/tlpnLTzdh8AO9ugXQVrXqarvst+Ig1hXbFIbvEmbDK9k5JUCqSLd6+ApOJPp6n1wPF8wF4KeV+o3gIAaEcr0N/kkDMge/scGVe+a2POoUWpKgFn5qVTzGQSNrmQANnzxRa3MjAe7YkO2z51o7yKY8UQyBMf4xeliwfYHqRJmc9uXlwvJtTsoeIOi4rM14+Sk1Z2qZ+tJEl0LUAZAORTuw4C9QKG0zABDTakorV7dW2xxfsO0ZeWoCDbnVbHGx/b3ZJk7QHdAgwHvc27n7vE1CT/2g0er7pUVi4k8zTR9NzPhosnao6IlVfbs6XotsF2RLhnfd7HNLCmY6Y28z6qbWKc=
+  file: "./target/simple-web-app.war"
   on:
-    tags: true
+    repo: flaresolar/simple-web-app
