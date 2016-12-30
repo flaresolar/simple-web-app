@@ -5,10 +5,8 @@ sudo: required
 services:
 - docker
 env:
-  DOCKER_USERNAME:
-    secure: D+kIFjKMvje1qEuyjeceG8z+bhxurGW7MN9QGSs4hSc0ITspPBU0LHZuRDl7Ji/LwM0cZjdknz4K0NCTnM9m+giaCjcChNCyexLIryEHR++BiN3wYpZjgg4yY4phlIGcqGZn8QRmz4+lVH08Fsrpjm9pYyJXQ0QSA6aStjR1MuUKD9nAYz3I5LW3SRgxnifjdr8wJ7PypL8zBYniSn0ekVJSgu0Zqg5i5zZsNszU+oLvHDZ2zMfoCM8+yudGOimxgm6DjrBk7TG8QqGl+mlRDyJB+TBOkyOYUz/Cohfb7OjdMudwUu9C32tAUIwdlqtL1mLJHJFkiWDkNeLJmzirQWn4ZevkchjrNIY7XjErrwWv7euakm9POIqdG8yAQPmJCzTP3bWo2QzNlYnDubCFeCKXQJAwrByCgdaUY87o2uvbjO+qqEyiTa0+8+tjrJjoLXLGmqB2aEPWz6sgDtb2iCXt2JyS3Qfym1VZNO9LiwDQuTcjwQ94KMI6gNRg3kUa8i6V6Fm3lRa3iQJpE3P2fcaqgj+Pvi70BJgu2WQ1l3IjFkM/V3orHnuoY8YJ/Hef7y8ZYrouDwZdMWvEKnpmCf0ovvFpM9p99MZkbIk/DauHFrGtyvMUSRpKNCG6Ruzm3YDqXwBBsYTzMueMeBeICxeRBSjqWORrzpIx/ILWaqc=
-  DOCKER_PASSWORD:
-    secure: CWpwz1YNmwqWhvOwU6hdrKhsJxxsF/UhGwUfT5V9BwBw0DV/jNGxGyncnt3Lfr60y1rV8Zn0hkJ9DNxyi9+XQ01ppyIJsfKI4G3oERv8C5REJMvThQevSbezZD/ljO1f4qsnNHC24Q5+x2Z/ife0e2CFzc7fdg4LkMTN/YR6QrrvE2A+Dde1zANgrtEQWdecfOHYRjSBbxzSzrXniaj5Bk+UBaRRohtqwitk4FHY9l6e/gR+qE2on34+DXEmPJ1eM7cICY04TddJgcMe4vNeWt5r0Bv3NkfZtYRjKVvcuK+3nGVPqfSa4njnBYpb9TiFd/sbpwAFYfcx7SL7WqNwRK3+gYG4B/Qu8TmPD8RIZ3Jm4Gou40CIkmeAuqylDGrJOTs6qMG8plZXoJzpL/l42fsrS4D0q8tDZ553MQNEuERsf9NypX1C45LFDHTZKqmqVMf70ZoyHQa+EWtJraHkFRe89TFxPyqLy4F8vhA75LG7xa0Q+3RnMPMQk2AifsLPJS+UjzUY4Qs158Uy8mM+nuhy6Jia4FsgobazruLb3/IUb6W5alBT2+7jZP5ZjB5qw9PfkOvg1GEr08Yo6BMAAW5cUfk5sIdBIQUOPtKqoBuhXq8HfCF/YCoU9GXSj5R5H5IGUTtRf5mgu+W8fDAr2sszrdAhHmAekAnGtVsqzWc=
+  global:
+    secure: WtUWx/JTAZAQbrfEVV37wQKfLU23WnZBJ4ZqopcOKWugJ3FUuP0nzkrXn7xbggEv5ZHHqNUhacUdFvf4cmTirPH6gPU9KDEs6uG5Xk1gORcUNnZe97/QIKHFZA4e7Xsj3JDrM7U0AT6l+adoqlM0x6B7vauluqz6f3sgAlnbMgM5hNsdPUCzONjAFDIFCJrvVGdES5oE2cki0kqZbgYfuARgPC32lEWK9DugPFhBKHdrmRI/e3/BjUUEWFZRC7fPZMgWbRtWRa6GT5mAcQY62bnxr5lCg/FKSwRBTu8ewwnyIN+RYhLP8RT0765ssOFL/6xmpybaZ7sCL94qBBq70smrd6NroH/QWq8aRGdzfs7GeZPGF1EHfR4Es2mH87PODt9HkddKaRcTSCmbIop+6cAYLvkwHo07utoZlwYdpd2mWbce58h4oBpwJp5I2XUgxXPsTqTvxHuCR9nHsWsvOovPJjHCFT9gMlAg8sEBG9nYbjVEYSPpknJ5D4tWqNi3zgujvksMfbQzI47E2JubIcgP81sdiCDV/oNC05B4wqObxbsR9CELKF7igieC/E25x9YQsaJtu+TY8UfYUuD2ztp/12dSwNCX1iYJyakO4GQ79IWrBpUSR1jA/I18OmkAZDuKy6uOlQnONChzsXCvcE2OPLtOEmpdlwE/VcKam9c=
 install:
 - mvn clean install
 deploy:
@@ -20,6 +18,6 @@ deploy:
     repo: flaresolar/simple-web-app
     tags: true
 after_deploy:
-  - docker build . -t flare/simple-web-app:"$TRAVIS_TAG"
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push flare/simple-web-app:$TRAVIS_TAG
+- docker build . -t flare/simple-web-app:"$TRAVIS_TAG"
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker push flare/simple-web-app:$TRAVIS_TAG
