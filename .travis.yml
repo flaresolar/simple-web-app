@@ -6,6 +6,10 @@ services:
 - docker
 install:
 - mvn clean install
+- docker build . -t flare/simple-web-app:latest
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PWD"
+- docker push flare/simple-web-app
+- docker logout
 deploy:
   skip_cleanup: true
   provider: releases
