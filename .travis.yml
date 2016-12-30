@@ -3,12 +3,12 @@ jdk:
 - openjdk7
 sudo: required
 services:
-  - docker
+- docker
 env:
-  DOCKER_USER:
-    secure: cLwhlJeDNBDXsDa3BkZ1ZNf3mTXB6m799H2ac5sDuBiF7o0E0vjGiWbpnwS9M1AJ9jBzMz9oYdLJcfAr7kRCeY8SgAvxGKDr+7fytEVX1VqA641/RqPCVPQEHJ9a7AC243opj0qviHunmI8PLUovxLjaToRPNZdTM457UvAErThcU5vVRfG/Gvl84EgnwWrrrJBKLKA3Dzwkn3zIhUYVqp7l2NGiektWgnbfladSZf+7yhRcxc3nZxniudOEVwlP4nIejSlioiaLmfZl9xk2gLWH4tSzZtC1a6n26AUrmZKGMU+ITMCip6Zid/ESw3dgpIdmTBM/6sXuh/jyBqAoWTeAbcY6ItYxtP4Co++iANkFSY0Ji06ZMBqFfN+xoBgui8jMKrZb+OIOvT4JFlyyI8duAqfYdLHuSF//rsqECikysAiFHK0lrmDCa29yUT6NMSVWFTSBysLmDruehwCj7KA+2JHtpTYHLrpneCWPvHeQ7gDF3VtM4v/J54yQPWNyOY4brYmUkYn8SziSXacPhA5tZST4Twppcdp5ArU2wPEoxrvtlLTV9iy2OnujFjOeiFbwuC96PdTKcaF9EtoKURnrope/ZmodD+UvkPDlmjlZmrcaKb2Rj+W3NMBmtT3SxyQjDINldpEg+0uVtH0/UWfVyLAGNjRZm5Fm3kytqpM=
-  DOCKER_PWD:
-    secure: LaqzkMePbcnKmkV6CzmSj/F43CrptRWF1qTdwA2M03iG88jk0h7EYsaX9sNG9difSf/4EHm6DNffnjH6sEFE2UACSxI4vvvQRKdi6dJ9WeQ0VM8cahayV5nFQQ0UVSMInpVjLGD48xZMuKxGijJixa6C2nFP18L3oi30ZoGl4OLdnpDbJo/vuq/MW2osYYAIZCTO90sTHl1rgqqdv6GmXIqcfMbUBqFf2e0LisQ7baDLDHzPDgJGZzN1k67NrWwfUuU/io/4GgZxykJxLcsBiSgvQ2mdXPs5Rbv1SN3WDMF1d3aO7txvEfE959HksNLOdLUKo5unDnDZ+vIpuq5XfbEdYe4S62H3miz0fjfhEJi0EAl4JWE+6+EmcKZzT5oyzcDouTimFV5MuSThO0Aji/bwFw5m/On0Iu+DEJEKoo+SAhKKSi0hKjQjfLIDprVB8YOXpTC+Pn5Gd9mfAdxbYM4np/aK439HbxbEvgDSsqTOaAvzdlPm3eFrd908rNaNzBjiNv1tpqEF9xY3hi6t5PzUUiXjoinI7K/F1p8YpXQZejEiKt9dmMt0c+NAdDzY5CHPAl6snhiU3M9LGWmgVVSUlXaY5tHE7UXA+19rAaQIqiYkJShXUCubQmqpHCTdcifxAO1ZAIYPW5xOqHT5AChn/ZBNNVCKRXB63qAgI6Y=
+  DOCKER_USERNAME:
+    secure: D+kIFjKMvje1qEuyjeceG8z+bhxurGW7MN9QGSs4hSc0ITspPBU0LHZuRDl7Ji/LwM0cZjdknz4K0NCTnM9m+giaCjcChNCyexLIryEHR++BiN3wYpZjgg4yY4phlIGcqGZn8QRmz4+lVH08Fsrpjm9pYyJXQ0QSA6aStjR1MuUKD9nAYz3I5LW3SRgxnifjdr8wJ7PypL8zBYniSn0ekVJSgu0Zqg5i5zZsNszU+oLvHDZ2zMfoCM8+yudGOimxgm6DjrBk7TG8QqGl+mlRDyJB+TBOkyOYUz/Cohfb7OjdMudwUu9C32tAUIwdlqtL1mLJHJFkiWDkNeLJmzirQWn4ZevkchjrNIY7XjErrwWv7euakm9POIqdG8yAQPmJCzTP3bWo2QzNlYnDubCFeCKXQJAwrByCgdaUY87o2uvbjO+qqEyiTa0+8+tjrJjoLXLGmqB2aEPWz6sgDtb2iCXt2JyS3Qfym1VZNO9LiwDQuTcjwQ94KMI6gNRg3kUa8i6V6Fm3lRa3iQJpE3P2fcaqgj+Pvi70BJgu2WQ1l3IjFkM/V3orHnuoY8YJ/Hef7y8ZYrouDwZdMWvEKnpmCf0ovvFpM9p99MZkbIk/DauHFrGtyvMUSRpKNCG6Ruzm3YDqXwBBsYTzMueMeBeICxeRBSjqWORrzpIx/ILWaqc=
+  DOCKER_PASSWORD:
+    secure: CWpwz1YNmwqWhvOwU6hdrKhsJxxsF/UhGwUfT5V9BwBw0DV/jNGxGyncnt3Lfr60y1rV8Zn0hkJ9DNxyi9+XQ01ppyIJsfKI4G3oERv8C5REJMvThQevSbezZD/ljO1f4qsnNHC24Q5+x2Z/ife0e2CFzc7fdg4LkMTN/YR6QrrvE2A+Dde1zANgrtEQWdecfOHYRjSBbxzSzrXniaj5Bk+UBaRRohtqwitk4FHY9l6e/gR+qE2on34+DXEmPJ1eM7cICY04TddJgcMe4vNeWt5r0Bv3NkfZtYRjKVvcuK+3nGVPqfSa4njnBYpb9TiFd/sbpwAFYfcx7SL7WqNwRK3+gYG4B/Qu8TmPD8RIZ3Jm4Gou40CIkmeAuqylDGrJOTs6qMG8plZXoJzpL/l42fsrS4D0q8tDZ553MQNEuERsf9NypX1C45LFDHTZKqmqVMf70ZoyHQa+EWtJraHkFRe89TFxPyqLy4F8vhA75LG7xa0Q+3RnMPMQk2AifsLPJS+UjzUY4Qs158Uy8mM+nuhy6Jia4FsgobazruLb3/IUb6W5alBT2+7jZP5ZjB5qw9PfkOvg1GEr08Yo6BMAAW5cUfk5sIdBIQUOPtKqoBuhXq8HfCF/YCoU9GXSj5R5H5IGUTtRf5mgu+W8fDAr2sszrdAhHmAekAnGtVsqzWc=
 install:
 - mvn clean install
 deploy:
@@ -20,11 +20,6 @@ deploy:
     repo: flaresolar/simple-web-app
     tags: true
 after_deploy:
-  - docker build . -t simple-web-app:$TRAVIS_TAG
-  - docker login -u="$DOCKER_USER" -p="$DOCKER_PWD"
-  - docker push simple-web-app:$TRAVIS_TAG
- #provider: script
-  #script: scripts/docerize.sh
-  on:
-    repo: flaresolar/simple-web-app
-    tags: true
+  - docker build . -t flare/simple-web-app:"$TRAVIS_TAG"
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push flare/simple-web-app:$TRAVIS_TAG
