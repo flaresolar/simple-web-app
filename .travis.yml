@@ -1,7 +1,14 @@
 language: java
 jdk:
 - openjdk7
-sudo: false
+sudo: required
+services:
+  - docker
+env:
+  DOCKER_USER:
+    secure: cLwhlJeDNBDXsDa3BkZ1ZNf3mTXB6m799H2ac5sDuBiF7o0E0vjGiWbpnwS9M1AJ9jBzMz9oYdLJcfAr7kRCeY8SgAvxGKDr+7fytEVX1VqA641/RqPCVPQEHJ9a7AC243opj0qviHunmI8PLUovxLjaToRPNZdTM457UvAErThcU5vVRfG/Gvl84EgnwWrrrJBKLKA3Dzwkn3zIhUYVqp7l2NGiektWgnbfladSZf+7yhRcxc3nZxniudOEVwlP4nIejSlioiaLmfZl9xk2gLWH4tSzZtC1a6n26AUrmZKGMU+ITMCip6Zid/ESw3dgpIdmTBM/6sXuh/jyBqAoWTeAbcY6ItYxtP4Co++iANkFSY0Ji06ZMBqFfN+xoBgui8jMKrZb+OIOvT4JFlyyI8duAqfYdLHuSF//rsqECikysAiFHK0lrmDCa29yUT6NMSVWFTSBysLmDruehwCj7KA+2JHtpTYHLrpneCWPvHeQ7gDF3VtM4v/J54yQPWNyOY4brYmUkYn8SziSXacPhA5tZST4Twppcdp5ArU2wPEoxrvtlLTV9iy2OnujFjOeiFbwuC96PdTKcaF9EtoKURnrope/ZmodD+UvkPDlmjlZmrcaKb2Rj+W3NMBmtT3SxyQjDINldpEg+0uVtH0/UWfVyLAGNjRZm5Fm3kytqpM=
+  DOCKER_PWD:
+    secure: LaqzkMePbcnKmkV6CzmSj/F43CrptRWF1qTdwA2M03iG88jk0h7EYsaX9sNG9difSf/4EHm6DNffnjH6sEFE2UACSxI4vvvQRKdi6dJ9WeQ0VM8cahayV5nFQQ0UVSMInpVjLGD48xZMuKxGijJixa6C2nFP18L3oi30ZoGl4OLdnpDbJo/vuq/MW2osYYAIZCTO90sTHl1rgqqdv6GmXIqcfMbUBqFf2e0LisQ7baDLDHzPDgJGZzN1k67NrWwfUuU/io/4GgZxykJxLcsBiSgvQ2mdXPs5Rbv1SN3WDMF1d3aO7txvEfE959HksNLOdLUKo5unDnDZ+vIpuq5XfbEdYe4S62H3miz0fjfhEJi0EAl4JWE+6+EmcKZzT5oyzcDouTimFV5MuSThO0Aji/bwFw5m/On0Iu+DEJEKoo+SAhKKSi0hKjQjfLIDprVB8YOXpTC+Pn5Gd9mfAdxbYM4np/aK439HbxbEvgDSsqTOaAvzdlPm3eFrd908rNaNzBjiNv1tpqEF9xY3hi6t5PzUUiXjoinI7K/F1p8YpXQZejEiKt9dmMt0c+NAdDzY5CHPAl6snhiU3M9LGWmgVVSUlXaY5tHE7UXA+19rAaQIqiYkJShXUCubQmqpHCTdcifxAO1ZAIYPW5xOqHT5AChn/ZBNNVCKRXB63qAgI6Y=
 install:
 - mvn clean install
 deploy:
@@ -9,6 +16,15 @@ deploy:
   api_key:
     secure: bqcGbyzBGYRpnmyNjaKsU2Co8HkGkmET0XWkKPdoMX4fWifI52CMXGjidIWapTBs60eCu3ypbPJQUeaXKOfOWDX20pWrDaKeWdXjZWNKGB/QttgwDvzJvZJrK69qL+/m4jn2upI22F2UIYzCOjw9HhCrdkBPZSoWU7e1U0rVAwC6SKUK10tR7tb/XgmlRvieJoiGj5XoEwZCujTJkNAFYr5M2L9ZIE7I994ieYeUClmG0Oja1xOReJI3WR9CxYHpcj8D/PpbajDArdimPfhE/ZgVJZgf3Aj2TpqCYYBUJ29ABw8pGZvP7cQNXMXK+fAqCZIEl+M5rNDhMHiY7zGBqBi0tg3LY3qMoT5d0O4rnpZ4mshybK8R5Y8MfnWV7TDcJTuxcwfLrn6biWtX0bJPqYCOeMLWfd8E+lPWEC92sgmTj2VULkkehH2bUpG/xFD9eqQyGmz3GrxAwf2rPKE9SDT8DC0MSNTSu+yYRs1rMRHAibHb6rpZ3eHyUHYuYN0PGGYq7ey2fjqJL/3/56v5/S+hJ2rC8/ERhvHZxLkzLUUFEDdFI/n0X6Yns7GdF1KAnlWyNE/qgoDvIZvSxOJR7WouQ1ojsxgDMLpHIlmsRUt8jgqjM+YHbfdbSsIbU+Kv/4FdYl0NvWgMjjbfpX7lQCpI35dHh2Pv3CwoHF0ZCZ4=
   file: "./target/simple-web-app.war"
+  on:
+    repo: flaresolar/simple-web-app
+    tags: true
+after_deploy:
+  - docker build . -t simple-web-app:$TRAVIS_TAG
+  - docker login -u="$DOCKER_USER" -p="$DOCKER_PWD"
+  - docker push simple-web-app:$TRAVIS_TAG
+ #provider: script
+  #script: scripts/docerize.sh
   on:
     repo: flaresolar/simple-web-app
     tags: true
