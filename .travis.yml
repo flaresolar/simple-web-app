@@ -5,7 +5,7 @@ sudo: required
 services:
 - docker
 install:
-  - mvn clean install
+- mvn clean install
 deploy:
   skip_cleanup: true
   provider: releases
@@ -17,5 +17,8 @@ deploy:
     tags: true
 after_deploy:
 - docker build . -t flare/simple-web-app:"$TRAVIS_TAG"
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PWD"
 - docker push flare/simple-web-app:$TRAVIS_TAG
+env:
+  global:
+    secure: OcGyC+NGR60ccJ+ID6HmqSXhttW4cpsh7F0mKv+d5l1/TcYYri4A3fVglTpudTVSyw9277J86wXawN+pq07xaNzKhsmwyajSgV4MhqNeDEMNCynKRHbW1C7+XXcITBuJq/wJJ+G6PIShcPFx+dKGIVwTqa30EZU0EkCV7lK7w2BUG7EwQji6JcNdYxbf4M16e5Ep5n4P3oLIEkZFDOE1GN88CmTynxhntv3793/0LRvQqTQPBkAB6z/QM3lwPljFKtbbLyTFFZ4Tsd9KxyVI+IV5Wjc9yvFlwjm/pJjbs6PQ9c2Pu6CsTiSg1VXU2d7WROgIZisqMCwPKTeLGKZj4+4eyG/wCFmG7/jmbEJehp12Y9Y4SPwEpfm1pi+PqMJEQtjih0N5953HXrrUh4DTv+2trfOhW2Ajg6+50o1c4Lnn1NqzfQ6HrSuZonyqp5tB3SVKANEkBtetO1iI5sTgyS1Uuj1Ol9oJLokVx1MX1rNwePoSLpEvxl5yCZ0Qg+8+eNOdfH+bnJrIivGQAerGU4HH1gYpzrCvelgWjt6qFPIZabqeDlKg+FZQhbHQs/KHmHEKlEDA7xsuLKaWtrAL0bKGw7giT5XOHPfBMeRD+TMINnWsjG/FXuosag3sB0EWeHGDq2Dix6mG9Jdoc8MkDN9eDd5mFJxSSFFcu1A46bw=
