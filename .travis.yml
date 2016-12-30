@@ -4,11 +4,7 @@ jdk:
 sudo: required
 services:
 - docker
-env:
-  global:
-    secure: WtUWx/JTAZAQbrfEVV37wQKfLU23WnZBJ4ZqopcOKWugJ3FUuP0nzkrXn7xbggEv5ZHHqNUhacUdFvf4cmTirPH6gPU9KDEs6uG5Xk1gORcUNnZe97/QIKHFZA4e7Xsj3JDrM7U0AT6l+adoqlM0x6B7vauluqz6f3sgAlnbMgM5hNsdPUCzONjAFDIFCJrvVGdES5oE2cki0kqZbgYfuARgPC32lEWK9DugPFhBKHdrmRI/e3/BjUUEWFZRC7fPZMgWbRtWRa6GT5mAcQY62bnxr5lCg/FKSwRBTu8ewwnyIN+RYhLP8RT0765ssOFL/6xmpybaZ7sCL94qBBq70smrd6NroH/QWq8aRGdzfs7GeZPGF1EHfR4Es2mH87PODt9HkddKaRcTSCmbIop+6cAYLvkwHo07utoZlwYdpd2mWbce58h4oBpwJp5I2XUgxXPsTqTvxHuCR9nHsWsvOovPJjHCFT9gMlAg8sEBG9nYbjVEYSPpknJ5D4tWqNi3zgujvksMfbQzI47E2JubIcgP81sdiCDV/oNC05B4wqObxbsR9CELKF7igieC/E25x9YQsaJtu+TY8UfYUuD2ztp/12dSwNCX1iYJyakO4GQ79IWrBpUSR1jA/I18OmkAZDuKy6uOlQnONChzsXCvcE2OPLtOEmpdlwE/VcKam9c=
 install:
-  - echo "$DOCKER_USERNAME"
   - mvn clean install
 deploy:
   skip_cleanup: true
