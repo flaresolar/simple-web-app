@@ -10,8 +10,6 @@ install:
 - docker login -u "$DOCKER_USER" -p "$DOCKER_PWD"
 - docker push flare/simple-web-app
 - docker logout
-- echo $AWS_ACCESS_KEY_ID
-- echo $AWS_SECRET_ACCESS_KEY
 deploy:
   skip_cleanup: true
   provider: releases
@@ -34,7 +32,7 @@ after_deploy:
 - ./ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i flare/simple-web-app:"$TRAVIS_TAG"
 env:
   global:
-  - AWS_DEFAULT_REGION=us-west
+  - AWS_DEFAULT_REGION=us-west-2
   - TASK_DEFINITION=simple-web-app
   - CLUSTER_NAME=Tikal-Test
   - SERVICE_NAME=simple-web-app-latest
