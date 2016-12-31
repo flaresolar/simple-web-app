@@ -10,6 +10,8 @@ install:
 - docker login -u "$DOCKER_USER" -p "$DOCKER_PWD"
 - docker push flare/simple-web-app
 - docker logout
+- echo $AWS_ACCESS_KEY_ID
+- echo $AWS_SECRET_ACCESS_KEY
 deploy:
   skip_cleanup: true
   provider: releases
