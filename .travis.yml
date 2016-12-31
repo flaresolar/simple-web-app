@@ -33,9 +33,11 @@ after_deploy:
 - pip install --user awscli
 - wget -nv https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy
 - chmod +x ecs-deploy
-#- aws ecs stop-task --cluster $CLUSTER_NAME --task `aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME |grep arn | sed  's/[ |"]//g'`
-- aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g' | xargs -i aws ecs stop-task --cluster $CLUSTER_NAME --task 
 - ./ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i flare/simple-web-app:"$TRAVIS_TAG"
+- aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'
+- export ARN=`aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'`
+- echo $ARN
+- aws ecs stop-task --cluster $CLUSTER_NAME --task $ARN
 env:
   global:
   - AWS_DEFAULT_REGION=us-west-2
