@@ -15,6 +15,7 @@ install:
 - aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'
 - export ARN=`aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'`
 - echo $ARN
+- aws ecs stop-task --cluster $CLUSTER_NAME --task $ARN
 deploy:
   skip_cleanup: true
   provider: releases
