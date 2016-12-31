@@ -10,6 +10,8 @@ install:
 - docker login -u "$DOCKER_USER" -p "$DOCKER_PWD"
 - docker push flare/simple-web-app
 - docker logout
+- sudo apt-get update && sudo apt-get install -y python-pip jq sed
+- pip install --user awscli
 - aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'
 - export ARN=`ws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME | grep arn | sed  's/[ |"]//g'`
 - echo $ARN
