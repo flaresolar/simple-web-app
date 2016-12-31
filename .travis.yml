@@ -27,12 +27,13 @@ after_deploy:
 - pip install --user awscli
 - wget -nv https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy
 - chmod +x ecs-deploy
-- ./ecs-deploy -c Tikal-Test -d $TASK_DEFINITION -i flare/simple-web-app:"$TRAVIS_TAG
+- aws ecs stop-task --cluster $CLUSTER_NAME --task $(aws ecs list-tasks --cluster $CLUSTER_NAME --service-name $SERVICE_NAME |grep arn | sed  's/[ |"]//g') && ./ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i flare/simple-web-app:"$TRAVIS_TAG"
 env:
   global:
   - AWS_DEFAULT_REGION=us-west
   - TASK_DEFINITION=simple-web-app
   - CLUSTER_NAME=Tikal-Test
+  - SERVICE_NAME=simple-web-app-latest
   - secure: OcGyC+NGR60ccJ+ID6HmqSXhttW4cpsh7F0mKv+d5l1/TcYYri4A3fVglTpudTVSyw9277J86wXawN+pq07xaNzKhsmwyajSgV4MhqNeDEMNCynKRHbW1C7+XXcITBuJq/wJJ+G6PIShcPFx+dKGIVwTqa30EZU0EkCV7lK7w2BUG7EwQji6JcNdYxbf4M16e5Ep5n4P3oLIEkZFDOE1GN88CmTynxhntv3793/0LRvQqTQPBkAB6z/QM3lwPljFKtbbLyTFFZ4Tsd9KxyVI+IV5Wjc9yvFlwjm/pJjbs6PQ9c2Pu6CsTiSg1VXU2d7WROgIZisqMCwPKTeLGKZj4+4eyG/wCFmG7/jmbEJehp12Y9Y4SPwEpfm1pi+PqMJEQtjih0N5953HXrrUh4DTv+2trfOhW2Ajg6+50o1c4Lnn1NqzfQ6HrSuZonyqp5tB3SVKANEkBtetO1iI5sTgyS1Uuj1Ol9oJLokVx1MX1rNwePoSLpEvxl5yCZ0Qg+8+eNOdfH+bnJrIivGQAerGU4HH1gYpzrCvelgWjt6qFPIZabqeDlKg+FZQhbHQs/KHmHEKlEDA7xsuLKaWtrAL0bKGw7giT5XOHPfBMeRD+TMINnWsjG/FXuosag3sB0EWeHGDq2Dix6mG9Jdoc8MkDN9eDd5mFJxSSFFcu1A46bw=
   - secure: hS7XcnzhV14OLBBv5YdOf34gmVeJTpYSF7run3TIu+NfhdyVjNhuaeqLfEXrT+OPrag1fZiW4xhJYnGXZL8i2oVR2/Q6PTwU+f19Fa7TNzmz9/1DOtlMcNP6bJu3z7iuvDmYEg1DjmDGVNDEhLxe3co0M4ZkSeqcOgX8ofnC/ec5t1cnXRqjg5UY+oEgvlYww2V4I9POYkam9rlEOFTdw24Us9wIq27LXZRJmcTtt3dZoNFXlTBGvicVuhT4Xi7LS2r8GNP3NKPGBHaqL5/hcfUew9+COUpFx2Yi88spryy/Asgo5/5Rz3eYSG7of7ujdVGFSZkf7t06T5B4FnXFH7rN0g224tfPA7GPtsOQ7Jf6ucnVn9IUSM6U4ODvVDvZ2Z3RDl6T8oN6CNQ+1aY65eD59mA8kXeQ+xaBUtLUv4dq3Kpjb7RQaPoQMnptc/NEZkpMSRrs/usV4sf7WAZj4abfHvCwlnNXQzXvoIPO7rvj9mM1hJkM3FFJ9W1GHkWDHdQD01rP2tBDQ4iiDRJeEHg4WVosZImupQG7d/kD3ehsnIO2tgzWEvOscl7r3FRX1MBcmXxyIPzgiW+dshw5JLr3xd4OH00Beu1wMjbrOYZGdJEOJAWbEDnnCP+IJPCkSg41LOYAcakqpYWpiJmyd3GWS+GGi68BKZDF5kHkzPU=
   - secure: G1nTLLXk6sbKyWGhNmW0s1zVOh/D39Un9YQhDWfTUVKJk4Ep/KiwLAm0a9HyCXf51LKAvSdXZU2FzeqkVuly/M5k1vyctS41y4szWhRKLPU1CbM99wvpG16pMlYOOHq5Vr7NA54Ftmi8nWrLn9q1QMLR/h/ln0gIblaGz86v6enyiaIS2IwerME2NWoEm90B+ucspbCDH3ekK/DeV+JSzTnDIz7LUfNhCG6uLufrwkmSdC0yC3oOqH0PO83sobCFC8i4AQFTU8pWlyGc6AKo3QX6HyLJiI66cfDp4pBFZ6KyhKgkG83MzWFPmqkaVePCfK9eSqF4Tr2Puq/pry+0oNr62rYu+EgJYwjIrK0OwyTZ7D4VgQbe60JuJF0MzV9vRqyrbk1qExVUal7yYFFjmD2V0m7/iZ2lNQk8oLz4HOTyJj/cPV7Meban/hXaXuTDAK5xF3y+7ASwfCquDT/k9uKb0UtrXpgwEpstY1xq1v/g52/8KZ2M+Vw0++ACjLZ2XYTjY9+ItZaPWDhOOIbErtVJEi096w4+gKLnvMREcac2qHkCiCAzfMXEyYXzqvSMjboGyyqHQ5makCjVdZrNFzCTA/3Wj9OdimhQ1TTm9MWPQ4DHEgLegZyDiQtrClmtgUdWN6FbsOj/WTC2jFTHfJWk615NZMHxH7zJY1f8u8Y=
