@@ -17,6 +17,7 @@ http://ec2-35-160-100-199.us-west-2.compute.amazonaws.com/simple-web-app/
   
   
 ##To Do (partial list):
+1. Deploy each commit (EC2/ECS)
 1. Setup build notifications.
 1. Add tests (under `scripts:`)
 1. Do not create a docker image on Pull Requqests
