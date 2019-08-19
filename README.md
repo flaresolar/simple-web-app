@@ -9,11 +9,11 @@ The repo's goal is to provide an en-to-end build pipeline, from commit to deploy
     * A new Travis-CI build will start on each push.  
     * A new docker image will be pushed to dockerhub on each successful build, under: `flare/simple-web-app:latest`  
 1. When ready, create a new release, and set its tag.  
-    * A new Travis-CI buil will start on each new tag.  
+    * A new Travis-CI build will start on each new tag.  
     * A new war file will be built and automatically added to the release.  
     * A new docker image will be created under: `flare/simple-web-app:$TAG_NAME` where `$TAG_NAME` is the newly created tag.  
     * The new docker image image will be deployed on AWS ECS. Current deployment is at:  
-http://ec2-35-160-100-199.us-west-2.compute.amazonaws.com/simple-web-app/  
+~~http://ec2-35-160-100-199.us-west-2.compute.amazonaws.com/simple-web-app/~~
   
   
 ##To Do (partial list):
